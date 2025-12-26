@@ -1,45 +1,46 @@
 # Table of Contents
-0. [User Stories and Mockups](#0-user-stories-and-mockups)  
-   0.1 [User Stories](#0-1-user-stories)  
-   0.2 [Mockups](#0-2-mockups)  
 
-1. [Design System Architecture](#1-design-system-architecture)  
-   1.1 [Project Overview](#1-1-project-overview)  
-   1.2 [System Architecture Diagram](#1-2-system-architecture-diagram)  
-   1.3 [Data Flow Process](#1-3-data-flow-process)  
-   1.4 [Database Structure](#1-4-database-structure)  
-   1.5 [Backend Services](#1-5-backend-services)  
-   1.6 [Administrator Workflow](#1-6-administrator-workflow)  
-   1.7 [Scalability Considerations](#1-7-scalability-considerations)  
-   1.8 [Security Measures](#1-8-security-measures)  
-   1.9 [Future Development](#1-9-future-development)  
+- [0. User Stories and Mockups](#0-user-stories-and-mockups)
+  - [0.1 User Stories](#01-user-stories)
+  - [0.2 Mockups](#02-mockups)
 
-2. [Components, Classes, and Database Design](#2-components-classes-and-database-design)  
-   2.1 [Back-End – Main Classes](#2-1-back-end-main-classes)  
-   2.2 [Front-End – UI Components](#2-2-front-end-ui-components)  
+- [1. Design System Architecture](#1-design-system-architecture)
+  - [1.1 Project Overview](#11-project-overview)
+  - [1.2 System Architecture Diagram](#12-system-architecture-diagram)
+  - [1.3 Data Flow Process](#13-data-flow-process)
+  - [1.4 Database Structure](#14-database-structure)
+  - [1.5 Backend Services](#15-backend-services)
+  - [1.6 Administrator Workflow](#16-administrator-workflow)
+  - [1.7 Scalability Considerations](#17-scalability-considerations)
+  - [1.8 Security Measures](#18-security-measures)
+  - [1.9 Future Development](#19-future-development)
 
-3. [High-Level Sequence Diagrams](#3-high-level-sequence-diagrams)  
-   3.1 [User Login](#3-1-user-login)  
-   3.2 [Register for a Session](#3-2-register-for-a-session)  
-   3.3 [Purchase a Session Book](#3-3-purchase-a-session-book)  
-   3.4 [Cancel a Registration](#3-4-cancel-a-registration)  
+- [2. Components, Classes, and Database Design](#2-components-classes-and-database-design)
+  - [2.1 Back-End – Main Classes](#21-back-end-main-classes)
+  - [2.2 Front-End – UI Components](#22-front-end--ui-components)
 
-4. [Document External and Internal APIs](#4-document-external-and-internal-apis)  
-   4.1 [External APIs](#4-1-external-apis)  
-   4.2 [Internal API (REST API)](#4-2-internal-api-rest-api)  
+- [3. High-Level Sequence Diagrams](#3-high-level-sequence-diagrams)
+  - [3.1 User Login](#31-user-login)
+  - [3.2 Register for a Session](#32-register-for-a-session)
+  - [3.3 Purchase a Session Book](#33-purchase-a-session-book)
+  - [3.4 Cancel a Registration](#34-cancel-a-registration)
 
-5. [SCM & QA Strategy](#5-scm-qa-strategy)  
-   5.1 [Source Control Management](#5-1-source-control-management)  
-   5.2 [Quality Assurance](#5-2-quality-assurance)  
-   5.3 [Deployment Pipeline](#5-3-deployment-pipeline)  
+- [4. Document External and Internal APIs](#4-document-external-and-internal-apis)
+  - [4.1 External APIs](#41-external-apis)
+  - [4.2 Internal API (REST API)](#42-internal-api-rest-api)
+
+- [5. SCM & QA Strategy](#5-scm--qa-strategy)
+  - [5.1 Source Control Management](#51-source-control-management-scm)
+  - [5.2 Quality Assurance](#52-quality-assurance-qa)
+  - [5.3 Deployment Pipeline](#53-deployment-pipeline)
+
 
 ---
 
-<a name="0-user-stories-and-mockups"></a>
-# 0 - User Stories and Mockups
 
-<a name="0-1-user-stories"></a>
-## 0.1 - **User Stories**
+# 0. User Stories and Mockups
+
+## 0.1 User Stories
 | User Story                                                                                                                                                    | MoSCoW      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | As a user, I want to create an account and log in, so that I can access my registrations and bookings.                                                        | Must Have   |
@@ -61,8 +62,7 @@
 
 [🔝  Back to top](#table-of-contents)
 
-<a name="0-2-mockups"></a>
-## 0.2 - **Mockups**
+## 0.2 Mockups
 **Mockup link:**  
 [Figma - Projet Portfolio Actual](https://www.figma.com/proto/n2tV15vPVSQ17N4QGYopwz/projet-portfolio-actual?node-id=1-3&p=f&t=LhLh9Zgk2Hqk3xHb-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
@@ -78,11 +78,9 @@
 
 [🔝  Back to top](#table-of-contents)
 
-<a name="1-design-system-architecture"></a>
 # 1. Design System Architecture
 
-<a name="1-1-project-overview"></a>
-## 1.1- Project Overview
+## 1.1 Project Overview
 
 This document describes the architecture for a sports facility management application. The system handles course scheduling, user registrations, online payments, and administrative operations.
 
@@ -123,7 +121,7 @@ This document describes the architecture for a sports facility management applic
 
 [🔝  Back to top](#table-of-contents)
 
-## 1.2 - System Architecture Diagram
+## 1.2 System Architecture Diagram
 
 ```mermaid
 flowchart LR
@@ -168,7 +166,7 @@ flowchart LR
 
 [🔝  Back to top](#table-of-contents)
 
-## 1.3 - Data Flow Process
+## 1.3 Data Flow Process
 
 Registration and payment workflow:
 
@@ -202,7 +200,7 @@ sequenceDiagram
     Frontend-->>User: Show confirmation
 ```
 
-## 1.4 - Database Structure
+## 1.4 Database Structure
 
 **users**
 - id
@@ -254,7 +252,7 @@ sequenceDiagram
 
 [🔝  Back to top](#table-of-contents)
 
-## 1.5 - Backend Services
+## 1.5 Backend Services
 
 ### Authentication Service
 Handles user login, registration, and role-based access control. Uses Symfony Security component with password hashing.
@@ -268,7 +266,7 @@ Processes user registrations, validates seat availability, handles cancellations
 ### Payment Service
 Integrates with Stripe API for payment processing. Manages transactions, refunds, and session book purchases.
 
-## 1.6 - Administrator Workflow
+## 1.6 Administrator Workflow
 
 ```mermaid
 flowchart TD
@@ -306,7 +304,7 @@ Administrative capabilities include:
 - Payment and transaction review
 - Report generation
 
-## 1.7 - Scalability Considerations
+## 1.7 Scalability Considerations
 
 The architecture supports growth through:
 - Modular service design allows independent scaling
@@ -315,7 +313,7 @@ The architecture supports growth through:
 - Caching layer can be added for performance
 - Symfony's built-in optimization tools
 
-## 1.8 - Security Measures
+## 1.8 Security Measures
 
 - Password encryption using bcrypt
 - CSRF token validation on forms
@@ -324,7 +322,7 @@ The architecture supports growth through:
 - Input validation and sanitization
 - SQL injection prevention through Doctrine ORM
 
-## 1.9 - Future Development
+## 1.9 Future Development
 
 Planned enhancements:
 - Email notification system
@@ -334,9 +332,9 @@ Planned enhancements:
 - Waiting list automation
 
 [🔝  Back to top](#table-of-contents)
-# 2. ### Components, Classes, and Database Design
+# 2. Components, Classes, and Database Design
 
-## 2.1 - Back-End – Main Classes
+## 2.1 Back-End Main Classes
 
 ### **User**
 
@@ -462,7 +460,7 @@ id, userId, sessionsCount, remainingSessions, purchaseDate, expiryDate
 
 ---
 
-## 2.2 - Front-End – UI Components
+## 2.2 Front-End – UI Components
 
 ### **Main Components**
 
@@ -546,7 +544,7 @@ flowchart LR
 
 # 3. High-Level Sequence Diagrams
 For this exercise, we selected four common scenarios and represented them using sequence diagrams. These scenarios illustrate the main interactions between the user and the system. The first scenario focuses on **User Login**, which handles authentication using a token. The second, **Register for Session**, shows how the system checks session availability and processes payment through Stripe. The third scenario, **Buy Session Book**, represents a complete purchase flow with transaction confirmation via a Stripe webhook. Finally, **Cancel Registration** demonstrates how a registration is canceled and how an automatic refund is processed based on the original payment method.
-## 3.1 - User Login
+## 3.1 User Login
 
 This diagram shows how a user logs into the platform.
 
@@ -583,7 +581,7 @@ sequenceDiagram
 
 [🔝  Back to top](#table-of-contents)
 
-## 3.2 - Register for a Session
+## 3.2 Register for a Session
 
 This diagram shows how a user signs up for a class session with payment.
 
@@ -631,7 +629,7 @@ sequenceDiagram
 
 ---
 
-## 3.3 - Purchase a Session Book
+## 3.3 Purchase a Session Book
 
 This diagram shows how a user buys a package of multiple sessions.
 
@@ -676,7 +674,7 @@ sequenceDiagram
 
 [🔝  Back to top](#table-of-contents)
 
-## 3.4 - Cancel a Registration
+## 3.4 Cancel a Registration
 
 This diagram shows how to cancel a registration with refund.
 
