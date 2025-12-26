@@ -1,60 +1,98 @@
-Table des matières
+<a name="top"></a>
+# Table of contents
 
-User Stories and Mockups
+0. [User Stories and Mockups](#0-user-stories-and-mockups)
+   0.1 [User Stories](#01-user-stories)
+   0.2 [Mockups](#02-mockups)
+1. [Design System Architecture](#1-design-system-architecture)
+   1.1 [Project Overview](#11-project-overview)
+   1.2 [System Architecture Diagram](#12-system-architecture-diagram)
+   1.3 [Data Flow Process](#13-data-flow-process)
+   1.4 [Database Structure](#14-database-structure)
+   1.5 [Backend Services](#15-backend-services)
+   1.6 [Administrator Workflow](#16-administrator-workflow)
+   1.7 [Scalability Considerations](#17-scalability-considerations)
+   1.8 [Security Measures](#18-security-measures)
+   1.9 [Future Development](#19-future-development)
+2. [Components, Classes, and Database Design](#2-components-classes-and-database-design)
+   2.1 [Back-End – Main Classes](#21-back-end-main-classes)
+   2.2 [Front-End – UI Components](#22-front-end-ui-components)
+3. [High-Level Sequence Diagrams](#3-high-level-sequence-diagrams)
+   3.1 [User Login](#31-user-login)
+   3.2 [Register for a Session](#32-register-for-a-session)
+   3.3 [Purchase a Session Book](#33-purchase-a-session-book)
+   3.4 [Cancel a Registration](#34-cancel-a-registration)
+4. [Document External and Internal APIs](#4-document-external-and-internal-apis)
+   4.1 [External APIs](#41-external-apis)
+   4.2 [Internal API (REST API)](#42-internal-api-rest-api)
+5. [SCM & QA Strategy](#5-scm-qa-strategy)
+   5.1 [Source Control Management](#51-source-control-management)
+   5.2 [Quality Assurance](#52-quality-assurance)
+   5.3 [Deployment Pipeline](#53-deployment-pipeline)
 
-0.1 User Stories
+---
 
-0.2 Mockups
+# 0 - User Stories and Mockups
 
-Design System Architecture
+## 0.1 - User Stories
+[🔝 Retour en haut](#top)
 
-1.1 Project Overview
+## 0.2 - Mockups
+[🔝 Retour en haut](#top)
 
-1.2 System Architecture Diagram
+# 1 - Design System Architecture
 
-1.3 Data Flow Process
+## 1.1 - Project Overview
+[🔝 Retour en haut](#top)
 
-1.4 Database Structure
+## 1.2 - System Architecture Diagram
+[🔝 Retour en haut](#top)
 
-1.5 Backend Services
+## 1.3 - Data Flow Process
+[🔝 Retour en haut](#top)
 
-1.6 Administrator Workflow
+## 1.4 - Database Structure
+[🔝 Retour en haut](#top)
 
-1.7 Scalability Considerations
+## 1.5 - Backend Services
+[🔝 Retour en haut](#top)
 
-1.8 Security Measures
+## 1.6 - Administrator Workflow
+[🔝 Retour en haut](#top)
 
-1.9 Future Development
+## 1.7 - Scalability Considerations
+[🔝 Retour en haut](#top)
 
-Components, Classes, and Database Design
+## 1.8 - Security Measures
+[🔝 Retour en haut](#top)
 
-2.1 Back-End – Main Classes
+## 1.9 - Future Development
+[🔝 Retour en haut](#top)
 
-2.2 Front-End – UI Components
+# 2 - Components, Classes, and Database Design
 
-High-Level Sequence Diagrams
+## 2.1 - Back-End – Main Classes
+[🔝 Retour en haut](#top)
 
-3.1 User Login
+## 2.2 - Front-End – UI Components
+[🔝 Retour en haut](#top)
 
-3.2 Register for a Session
+# 3 - High-Level Sequence Diagrams
 
-3.3 Purchase a Session Book
+## 3.1 - User Login
+[🔝 Retour en haut](#top)
 
-3.4 Cancel a Registration
+## 3.2 - Register for a Session
+[🔝 Retour en haut](#top)
 
-Document External and Internal APIs
+## 3.3 - Purchase a Session Book
+[🔝 Retour en haut](#top)
 
-4.1 External APIs
+## 3.4 - Cancel a Registration
+[🔝 Retour en haut](#top)
 
-4.2 Internal API (REST API)
+# 4
 
-SCM & QA Strategy
-
-5.1 Source Control Management
-
-5.2 Quality Assurance
-
-5.3 Deployment Pipeline
 
 # 0 - User Stories and Mockups
 
