@@ -1,109 +1,44 @@
-<a name="top"></a>
-
-# Table of contents
-
-
+# Table of Contents
 0. [User Stories and Mockups](#0-user-stories-and-mockups)  
-   0.1 [User Stories](#01-user-stories)  
-   0.2 [Mockups](#02-mockups)  
+   0.1 [User Stories](#0-1-user-stories)  
+   0.2 [Mockups](#0-2-mockups)  
 
 1. [Design System Architecture](#1-design-system-architecture)  
-   1.1 [Project Overview](#11-project-overview)  
-   1.2 [System Architecture Diagram](#12-system-architecture-diagram)  
-   1.3 [Data Flow Process](#13-data-flow-process)  
-   1.4 [Database Structure](#14-database-structure)  
-   1.5 [Backend Services](#15-backend-services)  
-   1.6 [Administrator Workflow](#16-administrator-workflow)  
-   1.7 [Scalability Considerations](#17-scalability-considerations)  
-   1.8 [Security Measures](#18-security-measures)  
-   1.9 [Future Development](#19-future-development)  
+   1.1 [Project Overview](#1-1-project-overview)  
+   1.2 [System Architecture Diagram](#1-2-system-architecture-diagram)  
+   1.3 [Data Flow Process](#1-3-data-flow-process)  
+   1.4 [Database Structure](#1-4-database-structure)  
+   1.5 [Backend Services](#1-5-backend-services)  
+   1.6 [Administrator Workflow](#1-6-administrator-workflow)  
+   1.7 [Scalability Considerations](#1-7-scalability-considerations)  
+   1.8 [Security Measures](#1-8-security-measures)  
+   1.9 [Future Development](#1-9-future-development)  
 
 2. [Components, Classes, and Database Design](#2-components-classes-and-database-design)  
-   2.1 [Back-End – Main Classes](#21-back-end-main-classes)  
-   2.2 [Front-End – UI Components](#22-front-end-ui-components)  
+   2.1 [Back-End – Main Classes](#2-1-back-end-main-classes)  
+   2.2 [Front-End – UI Components](#2-2-front-end-ui-components)  
 
 3. [High-Level Sequence Diagrams](#3-high-level-sequence-diagrams)  
-   3.1 [User Login](#31-user-login)  
-   3.2 [Register for a Session](#32-register-for-a-session)  
-   3.3 [Purchase a Session Book](#33-purchase-a-session-book)  
-   3.4 [Cancel a Registration](#34-cancel-a-registration)  
+   3.1 [User Login](#3-1-user-login)  
+   3.2 [Register for a Session](#3-2-register-for-a-session)  
+   3.3 [Purchase a Session Book](#3-3-purchase-a-session-book)  
+   3.4 [Cancel a Registration](#3-4-cancel-a-registration)  
 
 4. [Document External and Internal APIs](#4-document-external-and-internal-apis)  
-   4.1 [External APIs](#41-external-apis)  
-   4.2 [Internal API (REST API)](#42-internal-api-rest-api)  
+   4.1 [External APIs](#4-1-external-apis)  
+   4.2 [Internal API (REST API)](#4-2-internal-api-rest-api)  
 
 5. [SCM & QA Strategy](#5-scm-qa-strategy)  
-   5.1 [Source Control Management](#51-source-control-management)  
-   5.2 [Quality Assurance](#52-quality-assurance)  
-   5.3 [Deployment Pipeline](#53-deployment-pipeline)  
-
+   5.1 [Source Control Management](#5-1-source-control-management)  
+   5.2 [Quality Assurance](#5-2-quality-assurance)  
+   5.3 [Deployment Pipeline](#5-3-deployment-pipeline)  
 
 ---
 
+<a name="0-user-stories-and-mockups"></a>
 # 0 - User Stories and Mockups
 
-## 0.1 - User Stories
-[🔝 Retour en haut](#top)
-
-## 0.2 - Mockups
-[🔝 Retour en haut](#top)
-
-# 1 - Design System Architecture
-
-## 1.1 - Project Overview
-[🔝 Retour en haut](#top)
-
-## 1.2 - System Architecture Diagram
-[🔝 Retour en haut](#top)
-
-## 1.3 - Data Flow Process
-[🔝 Retour en haut](#top)
-
-## 1.4 - Database Structure
-[🔝 Retour en haut](#top)
-
-## 1.5 - Backend Services
-[🔝 Retour en haut](#top)
-
-## 1.6 - Administrator Workflow
-[🔝 Retour en haut](#top)
-
-## 1.7 - Scalability Considerations
-[🔝 Retour en haut](#top)
-
-## 1.8 - Security Measures
-[🔝 Retour en haut](#top)
-
-## 1.9 - Future Development
-[🔝 Retour en haut](#top)
-
-# 2 - Components, Classes, and Database Design
-
-## 2.1 - Back-End – Main Classes
-[🔝 Retour en haut](#top)
-
-## 2.2 - Front-End – UI Components
-[🔝 Retour en haut](#top)
-
-# 3 - High-Level Sequence Diagrams
-
-## 3.1 - User Login
-[🔝 Retour en haut](#top)
-
-## 3.2 - Register for a Session
-[🔝 Retour en haut](#top)
-
-## 3.3 - Purchase a Session Book
-[🔝 Retour en haut](#top)
-
-## 3.4 - Cancel a Registration
-[🔝 Retour en haut](#top)
-
-# 4
-
-
-# 0 - User Stories and Mockups
-
+<a name="0-1-user-stories"></a>
 ## 0.1 - **User Stories**
 | User Story                                                                                                                                                    | MoSCoW      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
@@ -124,38 +59,36 @@
 | As a user, I want a native mobile application (iOS/Android) at launch.                                                                                        | Won’t Have  |
 | As a user, I want push notifications for every event.                                                                                                         | Won’t Have  |
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
+<a name="0-2-mockups"></a>
 ## 0.2 - **Mockups**
-
 **Mockup link:**  
 [Figma - Projet Portfolio Actual](https://www.figma.com/proto/n2tV15vPVSQ17N4QGYopwz/projet-portfolio-actual?node-id=1-3&p=f&t=LhLh9Zgk2Hqk3xHb-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
-**Summary of main screens:**
-
+**Summary of main screens:**  
 - **Login / Register Page**: account creation and login with email and password, including field validation.
-    
 - **User Dashboard / Course Planning**: session balance, upcoming course schedule, quick access to bookings and session book purchases.
-    
 - **Session Detail**: course details, registration form, and payment via Stripe.
-    
 - **Booking History**: list of past and upcoming bookings, with option to cancel if conditions are met.
-    
 - **Session Book Purchase**: select package, total price, secure payment with confirmation.
-    
 - **Admin Dashboard**: statistics, course and session management, user and payment monitoring.
-    
 - **Forms (Create/Edit Course / Session)**: CRUD management with validation.
-    
 - **UI Components**: Header, Footer, FlashMessages, ConfirmDialog, DatePicker, PriceDisplay, SessionCard, LoadingSpinner.
 
-# ### 1. Design System Architecture
+[🔝  Back to top](#table-of-contents)
 
+<a name="1-design-system-architecture"></a>
+# 1. Design System Architecture
+
+<a name="1-1-project-overview"></a>
 ## 1.1- Project Overview
 
 This document describes the architecture for a sports facility management application. The system handles course scheduling, user registrations, online payments, and administrative operations.
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
+
+
 
 ## Architecture Components
 
@@ -188,7 +121,7 @@ This document describes the architecture for a sports facility management applic
 **Database**: MySQL
 **Payments**: Stripe API
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ## 1.2 - System Architecture Diagram
 
@@ -233,7 +166,7 @@ flowchart LR
     Stripe --> PayService
 ```
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ## 1.3 - Data Flow Process
 
@@ -319,7 +252,7 @@ sequenceDiagram
 - purchase_date
 - expiry_date
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ## 1.5 - Backend Services
 
@@ -400,8 +333,7 @@ Planned enhancements:
 - Multi-language support
 - Waiting list automation
 
-🔝 Retour en haut
-
+[🔝  Back to top](#table-of-contents)
 # 2. ### Components, Classes, and Database Design
 
 ## 2.1 - Back-End – Main Classes
@@ -431,6 +363,8 @@ id, email, password, firstName, lastName, roles, sessionBalance, createdAt, upda
 - `User 1–* Payment` (one user can have multiple payments)
     
 - `User 1–* SessionBook` (one user can have multiple session books)
+
+[🔝  Back to top](#table-of-contents)
 
 ---
 
@@ -474,7 +408,7 @@ id, courseId, startTime, endTime, maxSeats, availableSeats, status, price
 
 ---
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ### **Registration**
 
@@ -508,7 +442,7 @@ id, userId, amount, stripePaymentId, status, type, createdAt
 
 ---
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ### **SessionBook**
 
@@ -557,7 +491,7 @@ id, userId, sessionsCount, remainingSessions, purchaseDate, expiryDate
 | PriceDisplay                            | UI Component | Uniform display of prices                                                                                                                                   |
 | CancelCourse                            | UI Component | Cancel a course                                                                                                                                             |
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ### **Interactions**
 
@@ -608,11 +542,11 @@ flowchart LR
     SessionBookPurchase -->|POST /sessionBooks| SessionBookClass --> SessionBooksTable
     PaymentList -->|GET /payments| PaymentClass --> PaymentsTable 
 ```
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 # 3. High-Level Sequence Diagrams
 For this exercise, we selected four common scenarios and represented them using sequence diagrams. These scenarios illustrate the main interactions between the user and the system. The first scenario focuses on **User Login**, which handles authentication using a token. The second, **Register for Session**, shows how the system checks session availability and processes payment through Stripe. The third scenario, **Buy Session Book**, represents a complete purchase flow with transaction confirmation via a Stripe webhook. Finally, **Cancel Registration** demonstrates how a registration is canceled and how an automatic refund is processed based on the original payment method.
-## 3.1 - Use Case: User Login
+## 3.1 - User Login
 
 This diagram shows how a user logs into the platform.
 
@@ -647,9 +581,9 @@ sequenceDiagram
 
 ---
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
-## 3.2 - Use Case: Register for a Session
+## 3.2 - Register for a Session
 
 This diagram shows how a user signs up for a class session with payment.
 
@@ -683,7 +617,7 @@ sequenceDiagram
     Frontend-->>User: Registration confirmed
 ```
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 **Key Steps:**
 1. User selects a session
@@ -697,7 +631,7 @@ sequenceDiagram
 
 ---
 
-## 3.3 - Use Case: Purchase a Session Book
+## 3.3 - Purchase a Session Book
 
 This diagram shows how a user buys a package of multiple sessions.
 
@@ -740,9 +674,9 @@ sequenceDiagram
 
 ---
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
-## 3.4 - Use Case: Cancel a Registration
+## 3.4 - Cancel a Registration
 
 This diagram shows how to cancel a registration with refund.
 
@@ -805,7 +739,7 @@ These **four** sequence diagrams cover the critical use cases:
 
 These interactions show how User, Frontend, Backend, Database, and Stripe work together to provide a smooth and secure experience.
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 # 4. Document External and Internal APIs
 
@@ -845,8 +779,7 @@ Stripe is used as the external payment gateway to handle online payments, refund
 
 The backend exposes a RESTful API used by the frontend to manage authentication, sessions, registrations, and payments. All requests and responses use the **JSON** format.
 
-🔝 Retour en haut
-
+[🔝  Back to top](#table-of-contents)
 ---
 
 ### Authentication API
@@ -932,24 +865,23 @@ The backend exposes a RESTful API used by the frontend to manage authentication,
 
 ```json
 {
-  "status": "cancelled",
-  "refund": "processed"
+  "status": "cancelled",
+  "refund": "processed"
 }
 ```
 
 **Session Book API**
-| Endpoint                  | Description             |
+| Endpoint                  | Description             |
 | ------------------------- | ----------------------- |
 | `/session-books/purchase` | Purchase a session book |
-| `/session-books`          | Get user session books  |
-
+| `/session-books`          | Get user session books  |
 
 - **HTTP Method:** POST
 - **Input (JSON):**
 
 ```json
 {
-  "sessionsCount": 10
+  "sessionsCount": 10
 }
 ```
 
@@ -957,33 +889,35 @@ The backend exposes a RESTful API used by the frontend to manage authentication,
 
 ```json
 {
-  "status": "completed",
-  "remainingSessions": 10,
-  "expiryDate": "2026-09-01"
+  "status": "completed",
+  "remainingSessions": 10,
+  "expiryDate": "2026-09-01"
 }
 ```
 
 ** Payments API**
-| Endpoint    | Description        |
+| Endpoint    | Description        |
 | ----------- | ------------------ |
 | `/payments` | List user payments |
-
 
 - **HTTP Method:** GET
 - **Output (JSON):**
 
 ```json
+
 {
-  "id": 45,
-  "amount": 150,
-  "status": "completed",
-  "type": "session_book",
-  "createdAt": "2025-09-01T14:30"
+  "id": 45,
+  "amount": 150,
+  "status": "completed",
+  "type": "session_book",
+  "createdAt": "2025-09-01T14:30"
 }
+
 ```
 Stripe Webhook Endpoint
+  
 
-| Endpoint           | Description                    |
+| Endpoint           | Description                    |
 | ------------------ | ------------------------------ |
 | `/webhooks/stripe` | Receives Stripe payment events |
 
@@ -992,37 +926,25 @@ Stripe Webhook Endpoint
 - **Input:** Stripe event payload (JSON)
 
 - **Purpose:**
-
 - Confirm successful payments
-
 - Update payment status
-
 - Trigger session book creation or registration confirmation
-
 - Handle refunds
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 **Summary**
-
 - External API: Stripe (payments, refunds, webhooks)
-
 - Internal API: RESTful API built with Symfony
-
 - Data Format: JSON for all requests and responses
-
 - Security: Authentication via token, Stripe-secured payments, webhook validation
-
 - This API design ensures a secure, scalable, and clear separation of responsibilities between frontend, backend, and external services.
 
 # 5. SCM & QA Strategy
-
 ## 5.1 Source Control Management (SCM)
-
 We use **Git** for version control.
-
-- **main** → contains stable and production-ready code  
-- **develop** → used to integrate new features before production  
+- **main** → contains stable and production-ready code  
+- **develop** → used to integrate new features before production  
 - **feature branches** → one branch per feature or bug fix
 
 Workflow:
@@ -1033,10 +955,9 @@ Workflow:
 
 ---
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
 
 ## 5.2 Quality Assurance (QA)
-
 The goal is to ensure the application works correctly and remains easy to maintain.
 
 ### Testing strategy:
@@ -1049,10 +970,11 @@ The goal is to ensure the application works correctly and remains easy to mainta
 - **Postman** → manual API testing
 - **Stripe test mode** → simulate payments and refunds safely
 
+[🔝  Back to top](#table-of-contents)
+
 ---
 
 ## 5.3 Deployment Pipeline
-
 - **Development** → local environment for coding and quick tests
 - **Staging** → test environment with real database and Stripe test keys
 - **Production** → live application (planned later)
@@ -1064,10 +986,10 @@ The goal is to ensure the application works correctly and remains easy to mainta
 4. Manual validation of main features
 5. Merge into `main` and deploy to production
 
-👉 **In short:**
+**Summary:**
 - Use Git with `main`, `develop`, and feature branches
 - Review code before merging
 - Test with PHPUnit and Postman
 - Deploy first to staging, then to production
 
-🔝 Retour en haut
+[🔝  Back to top](#table-of-contents)
