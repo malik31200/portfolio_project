@@ -38,7 +38,7 @@
 ---
 
 
-# 0 User Stories and Mockups
+# 0. User Stories and Mockups
 
 ## 0.1 User Stories
 | User Story                                                                                                                                                    | MoSCoW      |
@@ -332,9 +332,9 @@ Planned enhancements:
 - Waiting list automation
 
 [🔝  Back to top](#table-of-contents)
-# 2. ### Components, Classes, and Database Design
+# 2. Components, Classes, and Database Design
 
-## 2.1 Back-End – Main Classes
+## 2.1 Back-End Main Classes
 
 ### **User**
 
