@@ -92,7 +92,6 @@ This document describes the architecture for a sports facility management applic
 
 ### Front-end Layer
 - HTML/CSS for structure and styling
-- Twig templating engine integrated with Symfony
 - Responsive user interface for course browsing and registration
 - Administrative dashboard for facility management
 
@@ -466,19 +465,20 @@ id, userId, sessionsCount, remainingSessions, purchaseDate, expiryDate
 
 | Component / Page                        | Type         | Purpose                                                                                                                                                     |
 | --------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ==LoginPage==                           | Page         | User login with email and password, redirects to Dashboard if successful                                                                                    |
-| ==RegisterPage==                        | Page         | User registration with field validation and password confirmation                                                                                           |
-| ==Dashboard / CoursePlanning==          | Page         | User dashboard: balance, upcoming bookings, quick links to Planning and Bookings  <br>Displays sessions in a calendar/grid with filters and available seats |
-| ==SessionDetail==                       | Page         | Full session details, registration form with payment option                                                                                                 |
-| ==BookingHistory==                      | Page         | List of past and upcoming bookings, with option to cancel                                                                                                   |
-| ==SessionBookPurchase==                 | Page         | Purchase session book: select quantity, total price, Stripe payment form                                                                                    |
-| ==AdminDashboard==/==CourseManagement== | Page         | Admin dashboard: stats, today's sessions, management links                                                                                                  |
+| IndexPage                           | Page         | Home page - course presentation and link to log in or register
+| LoginPage                           | Page         | User login with email and password, redirects to Dashboard if successful                                                                                    |
+| RegisterPage                        | Page         | User registration with field validation and password confirmation                                                                                           |
+| Dashboard / CoursePlanning          | Page         | User dashboard: balance, upcoming bookings, quick links to Planning and Bookings  <br>Displays sessions in a calendar/grid with filters and available seats |
+| SessionDetail                       | Page         | Full session details, registration form with payment option                                                                                                 |
+| BookingHistory                      | Page         | List of past and upcoming bookings, with option to cancel                                                                                                   |
+| SessionBookPurchase                 | Page         | Purchase session book: select quantity, total price, Stripe payment form                                                                                    |
+| AdminDashboard/CourseManagement | Page         | Admin dashboard: stats, today's sessions, management links                                                                                                  |
 |                                         |              | CRUD management of courses: list, search, filters                                                                                                           |
-| ==CreateCourseForm==                    | UI Component | Form to create or edit a course with validation                                                                                                             |
+| CreateCourseForm                    | UI Component | Form to create or edit a course with validation                                                                                                             |
 | CreateSessionForm                       | UI Component | Form to create a session: course, date/time, seats, price                                                                                                   |
-| ==UserManagement==                      | Page         | List, search, and delete users                                                                                                                              |
-| ==PaymentList==                         | Page         | Full payment history with filters and export                                                                                                                |
-| ==SessionParticipants==                 | Page         | List of session participants, statuses, and actions (cancellation)                                                                                          |
+| UserManagement                      | Page         | List, search, and delete users                                                                                                                              |
+| PaymentList                         | Page         | Full payment history with filters and export                                                                                                                |
+| SessionParticipants                 | Page         | List of session participants, statuses, and actions (cancellation)                                                                                          |
 | Header / Navigation                     | UI Component | Main menu, links based on role, login/logout management                                                                                                     |
 | Footer                                  | UI Component | Legal information and contact                                                                                                                               |
 | SessionCard                             | UI Component | Compact display of a session for the planning view                                                                                                          |
