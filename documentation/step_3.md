@@ -113,7 +113,7 @@ This document describes the architecture for a sports facility management applic
 
 ## Technology Stack
 
-**Frontend**: HTML, CSS, Twig
+**Frontend**: HTML, CSS
 **Backend**: PHP, Symfony
 **Database**: MySQL
 **Payments**: Stripe API
