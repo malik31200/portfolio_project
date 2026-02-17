@@ -3,28 +3,110 @@
 {% block title %}Accueil - Actual Sport{% endblock %}
 
 {% block body %}
-<div class="hero">
+
+{# ========== HERO SECTION ========== #}
+<section class="hero-section">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1>Bienvenue chez Actual Sport</h1>
-        <p>Votre salle de sport.</p>
+        <h1 class="hero-title">
+            Transformez votre corps, <br>
+            <span class="highlight">Transformez votre vie</span>
+        </h1>
+        <p class="hero-subtitle">
+            Rejoignez Actual Sport et atteignez vos objectifs fitness avec nos cours variés et nos coachs professionnels
+        </p>
         <div class="hero-buttons">
-            <a href="{{ path('app_courses') }}" class="btn btn-primary">Découvrir les cours</a>
-            <a href="{{ path('app_sessions') }}" class="btn btn-outline">Voir les sessions</a>
+            {% if app.user %}
+                <a href="{{ path('app_sessions') }}" class="btn btn-hero-primary">Réserver une session</a>
+                <a href="{{ path('app_shop') }}" class="btn btn-hero-secondary">Acheter un carnet</a>
+            {% else %}
+                <a href="{{ path('app_register') }}" class="btn btn-hero-primary">Commencer maintenant</a>
+                <a href="{{ path('app_courses') }}" class="btn btn-hero-secondary">Découvrir nos cours</a>
+            {% endif %}
         </div>
     </div>
-</div>
+</section>
 
-{% if courses is empty %}
-    <p>Aucun cours disponible.</p>
-{% else %}
-    <h2>Nos cours :</h2>
-    <div class="grid">
-        {% for course in courses %}
-            <div class="card">
-                <h3>{{ course.name }}</h3>
-                <p>{{ course.description }}</p>
+{# ========== STATS SECTION ========== #}
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">{{ courses|length }}</div>
+                <div class="stat-label">Cours disponibles</div>
             </div>
-        {% endfor %}
+        </div>
     </div>
-{% endif %}
+</section>
+
+{# ========== COURS SECTION ========== #}
+<section class="courses-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Nos cours populaires</h2>
+            <p class="section-subtitle">Découvrez notre large gamme de cours adaptés à tous les niveaux</p>
+        </div>
+
+        {% if courses is empty %}
+            <p class="text-center text-muted">Aucun cours disponible pour le moment.</p>
+        {% else %}
+            <div class="courses-grid">
+                {% for course in courses %}
+                    <div class="course-card">
+                        <div class="course-icon">
+                            {% if 'yoga' in course.name|lower %}
+                                🧘
+                            {% elseif 'boxe' in course.name|lower or 'cardio' in course.name|lower %}
+                                🥊
+                            {% elseif 'hiit' in course.name|lower %}
+                                💪
+                            {% else %}
+                                🏋️
+                            {% endif %}
+                        </div>
+                        <h3 class="course-title">{{ course.name }}</h3>
+                        <p class="course-description">{{ course.description }}</p>
+                        
+                        <div class="course-info">
+                            <div class="info-item">
+                                <span class="info-icon">⏱️</span>
+                                <span>{{ course.duration }} min</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span>Max {{ course.maxParticipants }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">💰</span>
+                                <span>{{ course.price }} €</span>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ path('app_sessions') }}?course={{ course.id }}" class="btn btn-course">
+                            Voir les sessions
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{# ========== CTA SECTION ========== #}
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à commencer votre transformation ?</h2>
+            <p class="cta-text">
+                Rejoignez les membres qui ont déjà transformé leur vie avec Actual Sport
+            </p>
+            {% if not app.user %}
+                <a href="{{ path('app_register') }}" class="btn btn-cta">S'inscrire maintenant</a>
+            {% else %}
+                <a href="{{ path('app_shop') }}" class="btn btn-cta">Acheter un carnet</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
 {% endblock %}
