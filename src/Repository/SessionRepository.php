@@ -16,28 +16,37 @@ class SessionRepository extends ServiceEntityRepository
         parent::__construct($registry, Session::class);
     }
 
-    //    /**
-    //     * @return Session[] Returns an array of Session objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Find sessions with optional Filters
+     * @return Session[] Returns an array of Session objects
+     */
+    public function findWithFilters(?int $courseId = null, ?\DateTimeInterface $date =null): array
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->leftJoin('s.course', 'c')
+            ->addSelect('c')
+            ->where('s.status = :status')
+            ->setParameter('status', 'scheduled')
+            ->andWhere('s.startTime > :now')
+            ->setParameter('now', new \DateTime('now', new \DateTimeZone('Europe/Paris')))
+            ->orderBy('s.startTime', 'ASC');
 
-    //    public function findOneBySomeField($value): ?Session
-    //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        // Filter by course if provided
+        if ($courseId !== null) {
+            $qb->andWhere('c.id = :courseId')
+                ->setParameter('courseId', $courseId);
+        }
+
+        // Filter by date if provided
+        if ($date !== null) {
+            $startOfDay = (clone $date)->setTime(0, 0, 0);
+            $endOfDay = (clone $date)->setTime(23, 59, 59);
+
+            $qb->andWhere('s.startTime BETWEEN :startOfDay AND :endOfDay')
+                ->setParameter('startOfDay', $startOfDay)
+                ->setParameter('endOfDay', $endOfDay);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -10,6 +10,7 @@ use App\Entity\Payment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -39,19 +40,38 @@ class WebController extends AbstractController
 
     //list of sessions
     #[Route('/sessions', name: 'app_sessions')]
-    public function sessions(EntityManagerInterface $em): Response
+    public function sessions(Request $request, EntityManagerInterface $em): Response
     {
-        $sessions = $em->getRepository(Session::class)
-            ->createQueryBuilder('s')
-            ->where('s.status = :status')
-            ->setParameter('status', 'scheduled')
-            ->orderBy('s.startTime', 'ASC')
-            ->getQuery()
-            ->getResult();
+        // Get filter parameters from URL
+        $courseId = $request->query->get('course');
+        $dateString = $request->query->get('date');
 
-        return $this->render('web/sessions.html.twig', [
+        // Convert date string to DateTime if provided
+        $date = null;
+        if ($dateString) {
+            try {
+                $date = new \DateTime($dateString);
+            } catch (\Exception $e) {
+                $date = null;
+            }
+        }
+
+        // Get filtered sessions using our new method
+        $sessions = $em->getRepository(Session::class)->findWithFilters(
+            $courseId ? (int)$courseId : null,
+            $date
+        );
+
+        // Get all courses for the dropdown
+        $courses = $em->getRepository(Course::class)->findBy(['isActive' => true], ['name' => 'ASC']);
+
+        return $this-> render('web/sessions.html.twig', [
             'sessions' => $sessions,
+            'courses' => $courses,
+            'selectedCourse' => $courseId,
+            'selectedDate' => $dateString,
         ]);
+
     }
 
     // User Dashboard
@@ -63,7 +83,7 @@ class WebController extends AbstractController
 
         $registrations = $em->getRepository(Registration::class)->findBy(
             ['user' => $user],
-            ['registeredAt' => 'DESC'],
+            ['registeredAt' => 'ASC'],
         );
 
         $sessionBooks = $em->getRepository(SessionBook::class)->findBy(
@@ -87,7 +107,7 @@ class WebController extends AbstractController
 
     // Admin Page
     #[Route('/admin', name: 'app_admin')]
-    #[IsGranted('ROLE_ADMIN')] //temporairement commenté pour tester
+    #[IsGranted('ROLE_ADMIN')]
     public function admin(EntityManagerInterface $em): Response
     {
         $coursesCount = $em->getRepository(Course::class)->count([]);

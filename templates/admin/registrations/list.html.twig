@@ -7,6 +7,50 @@
         <h1 class="page-title">📋 Gestion des réservations</h1>
     </div>
 
+    {# Filters Section #}
+    <div class="filter-card">
+        <h3>🔍 Filtrer les réservations</h3>
+        <form method="get" action="{{ path('admin_registrations_list') }}" class="filter-form">
+            <div class="filter-row" style="grid-template-columns: 1fr 1fr 1fr 1fr auto;">
+                <div class="filter-group">
+                    <label for"status">Statut</label>
+                    <select name="status" id="status" class="filter-select">
+                        <option value="all" {% if currentStatus == 'all' %}selected{% endif %}>Tous</option>
+                        <option value="confirmed" {% if  currentStatus == 'confirmed'%}selected{% endif %}>Confirmées</option>
+                        <option value="cancelled" {% if currentStatus == 'cancelled' %}selected{% endif %}>Annulées</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="course">Cours</label>
+                    <select name="course" id="course" class="filter-select">
+                        <option value="">Tous les cours</option>
+                        {% for course in courses %}
+                            <option value="{{ course.id }}" {% if selectedCourse == course.id %}selected{% endif %}}>
+                                {{ course.name}}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="start_date">Du</label>
+                    <input type="date" name="start_date" id="start_date" value="{{ selectedStartDate }}" class="filter-input">
+                </div>
+
+                <div class="filter-group">
+                    <label for="end_date">Au</label>
+                    <input type="date" name="end_date" id="end_date" value="{{ selectedEndDate }}" class="filter-input">
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">Filtrer</button>
+                    <a href="{{ path('admin_registrations_list') }}" class="btn btn-secondary">Réinitialiser</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
     {# Statistics #}
     <div class="stats-mini-grid">
         <div class="stats-mini-card">

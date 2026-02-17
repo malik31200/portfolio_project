@@ -224,21 +224,40 @@ class AdminController extends AbstractController
     public function listRegistrations(Request $request, EntityManagerInterface $em): Response
     {
         $status = $request->query->get('status', 'all');
+        $courseId = $request->query->get('course');
+        $startDateString = $request->query->get('start_date');
+        $endDateString = $request->query->get('end_date');
 
-        $qb = $em->getRepository(\App\Entity\Registration::class)
-            ->createQueryBuilder('r')
-            ->leftJoin('r.user', 'u')
-            ->leftJoin('r.session', 's')
-            ->leftJoin('s.course', 'c')
-            ->addSelect('u', 's', 'c')
-            ->orderBy('r.registeredAt', 'ASC');
+        // Convert date string to DateTime if provided
+        $startDate = null;
+        $endDate = null;
 
-        if ($status != 'all') {
-            $qb->where('r.status = :status')
-                ->setParameter('status', $status);
+        if ($startDateString) {
+            try {
+                $startDate = new \DateTime($startDateString);
+            } catch (\Exception $e) {
+                $startDate = null;
+            }
         }
 
-        $registrations = $qb->getQuery()->getResult();
+        if ($endDateString) {
+            try {
+                $endDate = new \DateTime($endDateString);
+            } catch (\Exception $e) {
+                $endDate = null;
+            }
+        }
+
+        // Get filtered registrations using our new method
+        $registrations = $em->getRepository(\App\Entity\Registration::class)->findWithFilters(
+            $status,
+            $courseId ? (int)$courseId : null,
+            $startDate,
+            $endDate
+        );
+
+        // Get all courses for the filter dropdown
+        $courses = $em->getRepository(Course::class)->findBy(['isActive' => true], ['name' => 'ASC']);
 
         // statistics
         $totalRegistrations = count($registrations);
@@ -247,7 +266,11 @@ class AdminController extends AbstractController
 
         return $this->render('admin/registrations/list.html.twig', [
             'registrations' => $registrations,
+            'courses' => $courses,
             'currentStatus' => $status,
+            'selectedCourse' => $courseId,
+            'selectedStartDate' => $startDateString,
+            'selectedEndDate' => $endDateString,
             'totalRegistrations' => $totalRegistrations,
             'activeCount' => $activeCount,
             'cancelledCount' => $cancelledCount,
@@ -258,7 +281,7 @@ class AdminController extends AbstractController
     #[Route('/admin/registrations/cancel/{id}', name: 'admin_registrations_cancel', methods: ['POST'])]
     public function cancelRegistration($id, EntityManagerInterface $em): Response
     {
-        $registration = $em->getRepository(\App\Entity\Registration::class)->find($id);
+        $registration = $em->getRepository(App\Entity\Registration::class)->find($id);
 
         if (!$registration) {
             $this->addFlash('error', 'Réservation non trouvée');

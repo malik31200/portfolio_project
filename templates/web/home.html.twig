@@ -3,8 +3,16 @@
 {% block title %}Accueil - Actual Sport{% endblock %}
 
 {% block body %}
-<h1>Bienvenue sur Actual Sport ! 💪</h1>
-<p>Ceci est un test pour vérifier que le layout fonctionne.</p>
+<div class="hero">
+    <div class="hero-content">
+        <h1>Bienvenue chez Actual Sport</h1>
+        <p>Votre salle de sport.</p>
+        <div class="hero-buttons">
+            <a href="{{ path('app_courses') }}" class="btn btn-primary">Découvrir les cours</a>
+            <a href="{{ path('app_sessions') }}" class="btn btn-outline">Voir les sessions</a>
+        </div>
+    </div>
+</div>
 
 {% if courses is empty %}
     <p>Aucun cours disponible.</p>

@@ -16,28 +16,51 @@ class RegistrationRepository extends ServiceEntityRepository
         parent::__construct($registry, Registration::class);
     }
 
-    //    /**
-    //     * @return Registration[] Returns an array of Registration objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('r.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Find registartions with optional filters
+     * @return Registration[] Return an array of Registration objects
+     */
 
-    //    public function findOneBySomeField($value): ?Registration
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findWithFilters(
+        ?string $status = null,
+        ?int $courseId = null,
+        ?\DateTimeInterface $startDate = null,
+        ?\DateTimeInterface $endDate = null,
+        ): array
+    {
+        $qb = $this->createQueryBuilder('r')
+                ->leftJoin('r.user', 'u')
+                ->leftJoin('r.session', 's')
+                ->leftJoin('s.course', 'c')
+                ->addSelect('u', 's', 'c')
+                ->orderBy('r.registeredAt', 'DESC');
+
+        // Filter by status if provided
+        if ($status && $status !== 'all') {
+            $qb->andWhere('r.status = :status')
+                ->setParameter('status', $status);
+        }
+
+        // Filter by course if provided
+        if ($courseId !== null) {
+            $qb->andWhere('c.id = :courseId')
+                ->setParameter('courseId', $courseId);
+        }
+
+        //Filter by date range if provided
+        if ($startDate !== null) {
+            $qb->andWhere('s.startTime >= :startDate')
+                ->setParameter('startDate', $startDate);
+        }
+
+        if ($endDate !== null) {
+            // Set end of day (23:59:29)
+            $endOfDay = (clone $endDate)->setTime(23, 59, 59);
+            $qb->andWhere('s.startTime <= :endDate')
+                ->setParameter('endDate', $endOfDay);
+        }
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

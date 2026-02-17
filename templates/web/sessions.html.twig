@@ -4,6 +4,34 @@
 
 {% block body %}
     <h1 class="page-title">📅 Sessions disponibles</h1>
+    <div class="filter-card">
+        <h3>🔍 Filtrer les sessions</h3>
+        <form method="get" action="{{ path('app_sessions') }}" class="filter-form">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="course">Cours</label>
+                    <select name="course" id="course" class="filter-select">
+                        <option value="">Tous les cours</option>
+                        {% for course in courses %}
+                            <option value="{{ course.id }}" {% if selectedCourse == course.id %}selected{% endif %}>
+                                {{ course.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" value="{{ selectedDate }}" class="filter-input">
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ path('app_sessions') }}" class="btn btn-secondary">Réinitialiser</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
 {% if sessions is empty %}
     <div class="card">

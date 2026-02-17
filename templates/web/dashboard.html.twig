@@ -20,7 +20,13 @@
                         <div class="flex-between">
                             <h3>{{ registration.session.course.name }}</h3>
                             <span class="badge badge-{{ registration.status }}">
-                                {{ registration.status }}
+                                {% if registration.status == 'confirmed' %}
+                                    Confirmée
+                                {% elseif registration.status == 'cancelled' %}
+                                    Annulée
+                                {% else %}
+                                     {{ registration.status }}
+                                {% endif %}
                             </span>
                         </div>
                         
@@ -46,14 +52,16 @@
                         </div>
                         
                         {% if registration.status == 'confirmed' %}
+                            {% if registration.session.startTime > date() %}
                             <form method="post" action="{{ path('booking_cancel', {id: registration.id}) }}" class="cancel-form" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">
                                 <button type="submit" class="btn btn-danger btn-small">
                                     ❌ Annuler ma réservation
                                 </button>
                             </form>
-                        {% elseif registration.status == 'cancelled' %}
-                            <p class="text-muted">Annulée le {{ registration.cancelledAt|date('d/m/Y à H:i') }}</p>
+                        {% else %}
+                            <p class="text-muted">⏰ Cette session est passée</p>
                         {% endif %}
+                    {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -66,7 +74,7 @@
         {% if sessionBooks is empty %}
             <div class="card">
                 <p class="text-muted">Vous n'avez aucun carnet de séances.</p>
-                <a href="#" class="btn">Acheter un carnet</a>
+                <a href="{{ path('app_shop') }}" class="btn">Acheter un carnet</a>
             </div>
         {% else %}
             <div class="grid">
@@ -116,11 +124,21 @@
                             <tr>
                                 <td>{{ payment.createdAt|date('d/m/Y H:i') }}</td>
                                 <td><strong>{{ payment.amount }} €</strong></td>
-                                <td>{{ payment.paymentMethod }}</td>
                                 <td>
-                                    <span class="badge badge-{{ payment.status }}">
-                                        {{ payment.status }}
-                                    </span>
+                                     {% if payment.sessionBook %}
+                                        🎫 Carnet
+                                    {% elseif payment.registration %}
+                                        📅 Réservation
+                                    {% else %}
+                                        💳 Paiement
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if payment.sessionBook %}
+                                        {{ payment.sessionBook.name }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}

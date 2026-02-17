@@ -11,11 +11,16 @@
         <header>
             <div class="container">
                 <nav>
-                    <div class="logo">Actual</div>
+                    <div class="logo">
+                        <a href="{{ path('app_home') }}">
+                            <img src="{{ asset('images/logo.avif') }}" alt="Actual Sport Actual">
+                        </a>
+                    </div>
                     <ul class="nav-links">
                         <li><a href="{{ path('app_home') }}">Accueil</a></li>
                         <li><a href="{{ path('app_courses') }}">Cours</a></li>
                         <li><a href="{{ path('app_sessions') }}">Sessions</a></li>
+                        <li><a href="{{ path('app_shop') }}">Acheter un carnet</a></li>
                         {% if app.user %}
                             <li><a href="{{ path('app_dashboard') }}">Mon espace</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
